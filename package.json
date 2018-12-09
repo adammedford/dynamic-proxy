@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "description": "",
   "keywords": [],
-  "main": "dist/dynamic-proxy.umd.js",
-  "module": "dist/dynamic-proxy.es5.js",
-  "typings": "dist/types/dynamic-proxy.d.ts",
+  "main": "dist/dynamic-proxy.min.js",
+  "typings": "dist/dynamic-proxy.d.ts",
   "files": [
     "dist"
   ],
@@ -33,18 +32,13 @@
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "precommit": "lint-staged",
     "travis-deploy-once": "travis-deploy-once",
-    "nest.build": "tsc",
-    "nest.format": "prettier --write \"src/**/*.ts\"",
-    "nest.start": "ts-node -r tsconfig-paths/register src/main.ts",
-    "nest.start:dev": "nodemon",
-    "nest.start:debug": "nodemon --config nodemon-debug.json",
-    "nest.prestart:prod": "rimraf dist && tsc",
-    "nest.start:prod": "node dist/main.js",
-    "nest.lint": "tslint -p tsconfig.json -c tslint.json",
-    "nest.test": "jest",
-    "nest.test:watch": "jest --watch",
-    "nest.test:cov": "jest --coverage",
-    "nest.test:e2e": "jest --config ./test/jest-e2e.json"
+    "format": "prettier --write \"src/**/*.ts\"",
+    "startNest": "ts-node -r tsconfig-paths/register src/main.ts",
+    "start:dev": "nodemon",
+    "start:debug": "nodemon --config nodemon-debug.json",
+    "prestart:prod": "rimraf dist && tsc",
+    "start:prod": "node dist/dynamic-proxy.min.js",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -121,7 +115,9 @@
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-terser": "^3.0.0",
     "rollup-plugin-typescript2": "^0.18.0",
+    "rollup-plugin-uglify": "^6.0.0",
     "semantic-release": "^15.9.16",
     "supertest": "^3.1.0",
     "travis-deploy-once": "^5.0.9",
